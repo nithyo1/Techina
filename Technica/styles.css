@@ -1,0 +1,83 @@
+*{
+    text-align: center;
+    font-family: 'Playfair Display';
+}
+
+h1 {
+    font-size: xxx-large;
+    color: #e84b68;
+    border-style: dotted;
+    border-width: 10px;
+    border-color: #e84b68;
+    margin-left: 400px;
+    margin-right: 400px;
+    border-radius: 30px;
+    animation: float 3s ease-in-out infinite;}
+body {
+    margin: 20px;
+    background-image: url(tree.jpeg);
+    background-size:cover;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    align-items: center;
+}
+
+.button-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.my-button1, .my-button2, .my-button3, .my-button4, .my-button5, .my-button6, .my-button7 {
+    margin-right: 80px;
+    padding: 10px 15px;
+    background-color: #e84b68;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 50px;
+    width: 300px;
+    font-size: xx-large;
+}
+
+.my-button1:hover, .my-button2:hover, .my-button3:hover, .my-button4:hover, .my-button5:hover, .my-button6:hover, .my-button7:hover {
+    background-color: #e63455;
+    scale: 1.1;
+    border-radius: 50px;
+}
+
+.text-area {
+    display: flex;
+    flex-direction: row;}
+
+textarea {
+    width: 60px;
+    height: 35px;
+    margin: 0 5px 5px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    resize: none;
+    font-size:xx-large;
+    border-width: 5px;
+    border-color: #e84b68;    
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
