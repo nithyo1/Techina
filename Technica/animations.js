@@ -46,22 +46,23 @@ function renderCalendar(month, year) {
 
     for (let day = 1; day <= totalDays; day++) {
         const td = document.createElement('td');
-        td.setAttribute('data-date', day); // Set the date for hover effect
+        td.setAttribute('data-date', day);
         td.textContent = day;
-
+    
         // Make each day clickable
         td.addEventListener('click', () => {
-            alert(`You clicked on ${monthNames[month]} ${day}, ${year}`);
+            const selectedDate = `${monthNames[month]} ${day}, ${year}`;
+            window.location.href = `test.html?date=${encodeURIComponent(selectedDate)}`;
         });
-
+    
         row.appendChild(td);
-
-        // Start a new row if Saturday (6) is reached
+    
         if ((startingDay + day) % 7 === 0) {
             calendarTable.appendChild(row);
-            row = document.createElement('tr'); // Start a new row
+            row = document.createElement('tr');
         }
     }
+    
 
     calendarTable.appendChild(row); // Append the last row
     monthDiv.appendChild(calendarTable);

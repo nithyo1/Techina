@@ -64,7 +64,10 @@
             for (let i = firstDay; i < 7; i++) {
                 const cell = document.createElement('td');
                 cell.innerHTML = `<span class="day-number">${day}</span>`;
-                cell.onclick = () => alert(`You clicked on ${day} ${months[currentMonth]} ${currentYear}`);
+                cell.onclick = () => {
+                    const selectedDate = `${day} ${months[currentMonth]} ${currentYear}`;
+                    window.location.href = `test.html?date=${encodeURIComponent(selectedDate)}`;
+                };
                 row.appendChild(cell);
                 day++;
             }
@@ -76,7 +79,10 @@
                     const cell = document.createElement('td');
                     if (day <= daysInMonth) {
                         cell.innerHTML = `<span class="day-number">${day}</span>`;
-                        cell.onclick = () => alert(`You clicked on ${day} ${months[currentMonth]} ${currentYear}`);
+                        cell.onclick = () => {
+                            const selectedDate = `${day} ${months[currentMonth]} ${currentYear}`;
+                            window.location.href = `test.html?date=${encodeURIComponent(selectedDate)}`;
+                        };
                         day++;
                     }
                     row.appendChild(cell);
