@@ -2,9 +2,13 @@
 body {
     font-family: 'Luminari', 'Cinzel', serif;
     background-color: #f3f4ed; /* Light, dreamy background */
+    background-image: url(Cheshire1.jpg);
+    background-size: cover;
     color: #4d326b; /* Dark purple text */
     text-align: center;
     padding: 2rem;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 /* Calendar title */
