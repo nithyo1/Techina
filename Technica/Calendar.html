@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alice in Wonderland Calendar</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Google Fonts for Uncial Antiqua -->
-    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <!-- Google Fonts for Cinzel fallback -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1 class="title">Alice in Wonderland Calendar</h1>
+    <h1 class="title">Cheshire Calendar</h1>
     <div class="calendar-container">
-        <!-- Month Section -->
         <div class="month">
-            <h2>January</h2>
-            <table class="calendar">
+            <h2 id="month-title">October 2024</h2>
+            <div class="navigation">
+                <button id="prev-month">❮</button>
+                <button id="next-month">❯</button>
+            </div>
+            <table class="calendar" id="calendar">
                 <tr>
                     <th>Sun</th>
                     <th>Mon</th>
@@ -24,56 +27,83 @@
                     <th>Fri</th>
                     <th>Sat</th>
                 </tr>
-                <tr>
-                    <td><span class="day-number">1</span></td>
-                    <td><span class="day-number">2</span></td>
-                    <td><span class="day-number">3</span></td>
-                    <td><span class="day-number">4</span></td>
-                    <td><span class="day-number">5</span></td>
-                    <td><span class="day-number">6</span></td>
-                    <td><span class="day-number">7</span></td>
-                </tr>
-                <tr>
-                    <td><span class="day-number">8</span></td>
-                    <td><span class="day-number">9</span></td>
-                    <td><span class="day-number">10</span></td>
-                    <td><span class="day-number">11</span></td>
-                    <td><span class="day-number">12</span></td>
-                    <td><span class="day-number">13</span></td>
-                    <td><span class="day-number">14</span></td>
-                </tr>
-                <tr>
-                    <td><span class="day-number">15</span></td>
-                    <td><span class="day-number">16</span></td>
-                    <td><span class="day-number">17</span></td>
-                    <td><span class="day-number">18</span></td>
-                    <td><span class="day-number">19</span></td>
-                    <td><span class="day-number">20</span></td>
-                    <td><span class="day-number">21</span></td>
-                </tr>
-                <tr>
-                    <td><span class="day-number">22</span></td>
-                    <td><span class="day-number">23</span></td>
-                    <td><span class="day-number">24</span></td>
-                    <td><span class="day-number">25</span></td>
-                    <td><span class="day-number">26</span></td>
-                    <td><span class="day-number">27</span></td>
-                    <td><span class="day-number">28</span></td>
-                </tr>
-                <tr>
-                    <td><span class="day-number">29</span></td>
-                    <td><span class="day-number">30</span></td>
-                    <td><span class="day-number">31</span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <!-- Calendar days will be populated here by JavaScript -->
             </table>
         </div>
-
-        <!-- Repeat the above div for each month, adjusting day numbers accordingly -->
-        
     </div>
+
+    <script>
+        const monthTitle = document.getElementById('month-title');
+        const calendar = document.getElementById('calendar');
+        const prevMonthButton = document.getElementById('prev-month');
+        const nextMonthButton = document.getElementById('next-month');
+
+        const months = [
+            "January", "February", "March", "April", "May", "June", 
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        let currentMonth = 9; // Starting from October (0-indexed)
+        let currentYear = 2024;
+
+        function renderCalendar() {
+            monthTitle.textContent = `${months[currentMonth]} ${currentYear}`;
+            calendar.querySelectorAll('tr:not(:first-child)').forEach(row => row.remove()); // Clear previous days
+            
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            let day = 1;
+
+            const row = document.createElement('tr');
+            // Fill empty cells for days before the first day of the month
+            for (let i = 0; i < firstDay; i++) {
+                row.appendChild(document.createElement('td'));
+            }
+
+            // Fill the calendar with days
+            for (let i = firstDay; i < 7; i++) {
+                const cell = document.createElement('td');
+                cell.innerHTML = `<span class="day-number">${day}</span>`;
+                cell.onclick = () => alert(`You clicked on ${day} ${months[currentMonth]} ${currentYear}`);
+                row.appendChild(cell);
+                day++;
+            }
+            calendar.appendChild(row);
+
+            while (day <= daysInMonth) {
+                const row = document.createElement('tr');
+                for (let i = 0; i < 7 && day <= daysInMonth; i++) {
+                    const cell = document.createElement('td');
+                    if (day <= daysInMonth) {
+                        cell.innerHTML = `<span class="day-number">${day}</span>`;
+                        cell.onclick = () => alert(`You clicked on ${day} ${months[currentMonth]} ${currentYear}`);
+                        day++;
+                    }
+                    row.appendChild(cell);
+                }
+                calendar.appendChild(row);
+            }
+        }
+
+        prevMonthButton.onclick = () => {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            renderCalendar();
+        };
+
+        nextMonthButton.onclick = () => {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            renderCalendar();
+        };
+
+        renderCalendar(); // Initial render
+    </script>
 </body>
 </html>

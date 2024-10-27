@@ -1,6 +1,6 @@
 /* General body styling */
 body {
-    font-family: 'Cursive', serif;
+    font-family: 'Luminari', 'Cinzel', serif;
     background-color: #f3f4ed; /* Light, dreamy background */
     color: #4d326b; /* Dark purple text */
     text-align: center;
@@ -13,13 +13,7 @@ body {
     color: #4d326b;
     margin-bottom: 2rem;
     text-shadow: 1px 1px #c3b0e5;
-}
-
-/* Main calendar container */
-.calendar-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    font-family: 'Luminari', 'Cinzel', serif;
 }
 
 /* Each month card */
@@ -30,6 +24,7 @@ body {
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s;
+    animation: rotate-tilt 3s ease-in-out infinite;
 }
 
 .month:hover {
@@ -42,7 +37,8 @@ h2 {
     color: #4d326b;
     font-size: 1.5rem;
     position: relative;
-    font-family: 'Times New Roman', serif;
+    font-family: 'Luminari', 'Cinzel', serif;
+    animation: float 4s ease-in-out infinite;
 }
 
 h2::after {
@@ -60,12 +56,13 @@ h2::after {
     margin-top: 1rem;
 }
 
-.calendar th, .calendar td {
+.calendar th,
+.calendar td {
     width: 14.2%;
     height: 3rem;
     text-align: center;
     border: 1px solid #c3b0e5;
-    font-family: 'Georgia', serif;
+    font-family: 'Luminari', 'Cinzel', serif;
     font-size: 1rem;
 }
 
@@ -98,12 +95,45 @@ h2::after {
     background-color: #f4baba; /* Alternating light red background */
 }
 
-/* Animations for whimsical feel */
-@keyframes rotate-tilt {
-    0%, 100% { transform: rotate(-1deg); }
-    50% { transform: rotate(1deg); }
+/* Navigation buttons styling */
+.navigation {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
 }
 
-.month {
-    animation: rotate-tilt 3s ease-in-out infinite;
+button {
+    background-color: #c3b0e5;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #d8a7b1; /* Change color on hover */
+}
+
+/* Animations for whimsical feel */
+@keyframes rotate-tilt {
+    0%,
+    100% {
+        transform: rotate(-1deg);
+    }
+    50% {
+        transform: rotate(1deg);
+    }
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
 }
