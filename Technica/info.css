@@ -1,22 +1,63 @@
-* {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('InfoPageBackground.jpg'); /* Replace with a real image URL */
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #3b3b3b;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
-.header{
-    background-image: linear-gradient(#eceac5, #e5cccc);
+header {
+    background-color: rgba(176, 224, 230, 0.8);
+    padding: 20px;
     text-align: center;
-    box-shadow: 0 0 8px #888888;
-    padding: 5px 0;
 }
 
-.box{
-    height: 30em;
-    width: 26em;
-    margin: 0 auto;
-    align-items: center;
+h1 {
+    font-size: 2.5em;
+    color: #ff69b4;
+}
+
+h2 {
+    color: #ff1493;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.info-box {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ffb6c1;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 45%; /* Adjust width to fit your design */
+    max-height: 600px; /* Limit height for better layout */
+    overflow-y: auto; /* Allow scrolling if content exceeds max height */
+}
+
+.left {
+    margin-right: 10px;
+}
+
+.right {
+    margin-left: 10px;
+}
+
+ul {
+    list-style-type: square;
+}
+
+footer {
     text-align: center;
-    box-shadow: 0 0 8px #c5bcbc;
-    background-color: antiquewhite;
-    margin-top: 30px;
+    padding: 10px;
+    background-color: rgba(176, 224, 230, 0.8);
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
-
